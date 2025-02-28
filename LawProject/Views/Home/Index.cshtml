@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    Layout = null;
+    
 }
 
 <!-- Bootstrap 5.3 CSS -->
@@ -27,7 +27,8 @@
         }
 
             .sidebar a:hover {
-                background: #495057;
+                background:white;
+                color:black;
             }
 
     .content {
@@ -62,9 +63,28 @@
 
 <!-- Sidebar (Desktop) -->
 <div class="sidebar d-none d-md-block">
-    <a href="#" onclick="changeContent('dummy1')">Pdf1</a>
-    <a href="#" onclick="changeContent('dummy2')">Pdf2</a>
-    <a href="#" onclick="changeContent('dummy3')">Pdf3</a>
+    <div class="list-group">
+        <a href="#chapter1" class="list-group-item list-group-item-action bg-dark" data-bs-toggle="collapse">Chapter 1</a>
+        <div id="chapter1" class="collapse">
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white bg-black text-white" onclick="changeContent('dummy1')">Act 1</a>
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy2')">Act 2</a>
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy3')">Act 3</a>
+        </div>
+
+        <a href="#chapter2" class="list-group-item list-group-item-action bg-dark" data-bs-toggle="collapse">Chapter 2</a>
+        <div id="chapter2" class="collapse">
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy4')">Act 1</a>
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy5')">Act 2</a>
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy6')">Act 3</a>
+        </div>
+
+        <a href="#chapter3" class="list-group-item list-group-item-action bg-dark" data-bs-toggle="collapse">Chapter 3</a>
+        <div id="chapter3" class="collapse">
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy7')">Act 1</a>
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy8')">Act 2</a>
+            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy9')">Act 3</a>
+        </div>
+    </div>
 </div>
 
 <!-- Offcanvas Sidebar (Mobile) -->
@@ -74,11 +94,55 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
-        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy1')" data-bs-dismiss="offcanvas">Pdf1</a>
-        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy2')" data-bs-dismiss="offcanvas">Pdf2</a>
-        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy3')" data-bs-dismiss="offcanvas">Pdf3</a>
+        <div class="accordion" id="mobileAccordion">
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mobileChapter1">
+                        Chapter 1
+                    </button>
+                </h2>
+                <div id="mobileChapter1" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
+                    <div class="accordion-body">
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy1')" data-bs-dismiss="offcanvas">Act 1</a>
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy2')" data-bs-dismiss="offcanvas">Act 2</a>
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy3')" data-bs-dismiss="offcanvas">Act 3</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mobileChapter2">
+                        Chapter 2
+                    </button>
+                </h2>
+                <div id="mobileChapter2" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
+                    <div class="accordion-body">
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy4')" data-bs-dismiss="offcanvas">Act 1</a>
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy5')" data-bs-dismiss="offcanvas">Act 2</a>
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy6')" data-bs-dismiss="offcanvas">Act 3</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mobileChapter3">
+                        Chapter 3
+                    </button>
+                </h2>
+                <div id="mobileChapter3" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
+                    <div class="accordion-body">
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy7')" data-bs-dismiss="offcanvas">Act 1</a>
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy8')" data-bs-dismiss="offcanvas">Act 2</a>
+                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy9')" data-bs-dismiss="offcanvas">Act 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- Main Content -->
 <div class="content">
