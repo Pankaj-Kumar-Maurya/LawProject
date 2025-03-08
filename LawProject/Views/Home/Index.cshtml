@@ -42,7 +42,9 @@
             .tabs .active {
                 border-bottom: 3px solid #FF5C5C;
             }
-
+            .activeChapter{
+            border-bottom: 3px solid #FF5C5C;
+            }
         .chapter-list {
             padding: 15px;
             font-size: 12px;
@@ -54,6 +56,20 @@
             margin-bottom: 5px;
             border: 1px solid #8B5A2B;
         }
+
+        div.scrollmenu {
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+            div.scrollmenu a {
+                display: inline-block;
+                color: white;
+                text-align: center;
+                padding: 14px;
+                text-decoration: none;
+            }
     </style>
 </head>
 <body>
@@ -84,8 +100,33 @@
     </div>
 
     <div id="chapterDescriptionDiv" style="display: none;">
+        <div class="scrollmenu">
+            <a href="#chapter1" class="activeChapter">Chapter I</a>
+            <a href="#chapter2">Chapter II</a>
+            <a href="#chapter3">Chapter III</a>
+            <a href="#chapter4">Chapter IV</a>
+            <a href="#chapter5">Chapter V</a>
+            <a href="#chapter6">Chapter VI</a>
+            <a href="#chapter7">Chapter VII</a>
+            <a href="#chapter8">Chapter VIII</a>
+            <a href="#chapter9">Chapter IX</a>
+            <a href="#chapter10">Chapter X</a>
+            <a href="#chapter11">Chapter XI</a>
+            <a href="#chapter12">Chapter XII</a>
+            <a href="#chapter13">Chapter XIII</a>
+            <a href="#chapter15">Chapter XV</a>
+            <a href="#chapter16">Chapter XVI</a>
+            <a href="#chapter17">Chapter XVII</a>
+            <a href="#chapter18">Chapter XVIII</a>
+            <a href="#chapter19">Chapter XIX</a>
+            <a href="#chapter20">Chapter XX</a>
+            <a href="#chapter21">Chapter XXI</a>
+            <a href="#chapter22">Chapter XXII</a>
+            <a href="#chapter23">Chapter XXIII</a>
+
+
+        </div>
         <button onclick="showChapterList()">🔙 Back to Chapters</button>
-        <div id="chapterContent"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -95,7 +136,7 @@
             $("#chapterListDiv").hide();
             $("#chapterDescriptionDiv").show();
 
-            $("#chapterContent").html(`<h2>${chapterName}</h2><p>Details about ${chapterName} go here...</p>`);
+            $("#chapterContent").html(`<h2>${chapterName}</h2>`);
         }
 
         function showChapterList() {
