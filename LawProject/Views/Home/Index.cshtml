@@ -1,159 +1,110 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-    
+    Layout = null;
 }
-
-<!-- Bootstrap 5.3 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<style>
-    /* Custom styles */
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background: #343a40;
-        padding-top: 20px;
-    }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 15px;
-            text-decoration: none;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Penal Code - 1860</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /*  background: url('https://www.transparenttextures.com/patterns/aged-paper.png'); */
         }
 
-            .sidebar a:hover {
-                background:white;
-                color:black;
+        .header {
+            background-color: #5A3412;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+            .header .title {
+                font-size: 20px;
             }
 
-    .content {
-        margin-left: 260px;
-        padding: 20px;
-        transition: all 0.3s;
-    }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #7A4921;
+        }
 
-    /* Hide sidebar on small screens */
-    @@media (max-width: 768px) {
-        .sidebar
+            .tabs div {
+                padding: 10px 20px;
+                color: #fff;
+                cursor: pointer;
+            }
 
-    {
-        display: none;
-    }
+            .tabs .active {
+                border-bottom: 3px solid #FF5C5C;
+            }
 
-    .content {
-        margin-left: 0;
-    }
+        .chapter-list {
+            padding: 15px;
+            font-size: 12px;
+        }
 
-    }
-</style>
-
-<!-- Navbar (for mobile) -->
-<nav class="navbar navbar-dark bg-dark d-md-none">
-    <div class="container-fluid">
-        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-            ☰ Menu
-        </button>
+        .chapter {
+            background-color: #FFF8DC;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #8B5A2B;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">Indian Penal Code - 1860</div>
     </div>
-</nav>
+    <div id="chapterListDiv">
 
-<!-- Sidebar (Desktop) -->
-<div class="sidebar d-none d-md-block">
-    <div class="list-group">
-        <a href="#chapter1" class="list-group-item list-group-item-action bg-dark" data-bs-toggle="collapse">Chapter 1</a>
-        <div id="chapter1" class="collapse">
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white bg-black text-white" onclick="changeContent('dummy1')">Act 1</a>
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy2')">Act 2</a>
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy3')">Act 3</a>
+        <div class="tabs">
+            <div class="active">INDIAN PENAL CODE - 1860</div>
         </div>
 
-        <a href="#chapter2" class="list-group-item list-group-item-action bg-dark" data-bs-toggle="collapse">Chapter 2</a>
-        <div id="chapter2" class="collapse">
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy4')">Act 1</a>
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy5')">Act 2</a>
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy6')">Act 3</a>
-        </div>
-
-        <a href="#chapter3" class="list-group-item list-group-item-action bg-dark" data-bs-toggle="collapse">Chapter 3</a>
-        <div id="chapter3" class="collapse">
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy7')">Act 1</a>
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy8')">Act 2</a>
-            <a href="#" class="list-group-item list-group-item-action ps-4 bg-black text-white" onclick="changeContent('dummy9')">Act 3</a>
-        </div>
-    </div>
-</div>
-
-<!-- Offcanvas Sidebar (Mobile) -->
-<div class="offcanvas offcanvas-start bg-dark text-white" id="mobileSidebar">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Menu</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="accordion" id="mobileAccordion">
-            <div class="accordion-item bg-dark">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mobileChapter1">
-                        Chapter 1
-                    </button>
-                </h2>
-                <div id="mobileChapter1" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
-                    <div class="accordion-body">
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy1')" data-bs-dismiss="offcanvas">Act 1</a>
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy2')" data-bs-dismiss="offcanvas">Act 2</a>
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy3')" data-bs-dismiss="offcanvas">Act 3</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-dark">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mobileChapter2">
-                        Chapter 2
-                    </button>
-                </h2>
-                <div id="mobileChapter2" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
-                    <div class="accordion-body">
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy4')" data-bs-dismiss="offcanvas">Act 1</a>
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy5')" data-bs-dismiss="offcanvas">Act 2</a>
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy6')" data-bs-dismiss="offcanvas">Act 3</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-dark">
-                <h2 class="accordion-header">
-                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mobileChapter3">
-                        Chapter 3
-                    </button>
-                </h2>
-                <div id="mobileChapter3" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
-                    <div class="accordion-body">
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy7')" data-bs-dismiss="offcanvas">Act 1</a>
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy8')" data-bs-dismiss="offcanvas">Act 2</a>
-                        <a href="#" class="d-block text-white p-2" onclick="changeContent('dummy9')" data-bs-dismiss="offcanvas">Act 3</a>
-                    </div>
-                </div>
-            </div>
+        <div class="chapter-list">
+            <div class="chapter" onclick="showChapter(this)">Chapter I - Introduction (1–5)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter II - General Explanations (6–52A)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter III - Punishments (53–75)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter IV - General Exceptions (76–106)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter V - Abetment (107–120)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter VA - Criminal Conspiracy (120A–120B)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter VI - Offences against the State (121–130)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter VII - Offences relating to the Army, Navy and Air Force (131–140)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter VIII - Offences against the Public Tranquillity (141–160)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter IX - Offences by or related to Public Servants (161–171)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter IXA - Offences relating to Elections (171A–171I)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter X - Contempts of Lawful Authority of Public Servants (172–190)</div>
+            <div class="chapter" onclick="showChapter(this)">Chapter XI - False Evidence and Offences against Public Justice</div>
         </div>
     </div>
-</div>
+
+    <div id="chapterDescriptionDiv" style="display: none;">
+        <button onclick="showChapterList()">🔙 Back to Chapters</button>
+        <div id="chapterContent"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function showChapter(element) {
+            const chapterName = $(element).text(); // Get text from clicked element
+            $("#chapterListDiv").hide();
+            $("#chapterDescriptionDiv").show();
+
+            $("#chapterContent").html(`<h2>${chapterName}</h2><p>Details about ${chapterName} go here...</p>`);
+        }
+
+        function showChapterList() {
+            $("#chapterDescriptionDiv").hide();
+            $("#chapterListDiv").show();
+        }
+    </script>
 
 
-<!-- Main Content -->
-<div class="content">
-    <h2 id="main-title">Welcome</h2>
-    <iframe id="pdf-viewer" src="" width="100%" height="600px" style="border: none;"></iframe>
-</div>
-
-<script>
-    // Function to change content based on selection
-    function changeContent(pdfName) {
-        const pdfViewer = document.getElementById("pdf-viewer");
-        pdfViewer.src = `/pdfs/${pdfName}.pdf`; // Load PDF dynamically
-    }
-</script>
+  
+</body>
+</html>
