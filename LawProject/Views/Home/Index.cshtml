@@ -45,7 +45,6 @@
 
         .activeChapter {
             border-bottom: 3px solid red;
-
         }
 
         .chapter-list {
@@ -111,10 +110,12 @@
             <a href="#chapterIII">Chapter III</a>
             <a href="#chapterIV">Chapter IV</a>
             <a href="#chapterV">Chapter V</a>
+            <a href="#chapterVA">Chapter VA</a>
             <a href="#chapterVI">Chapter VI</a>
             <a href="#chapterVII">Chapter VII</a>
             <a href="#chapterVIII">Chapter VIII</a>
             <a href="#chapterIX">Chapter IX</a>
+            <a href="#chapterIXA">Chapter IXA</a>
             <a href="#chapterX">Chapter X</a>
             <a href="#chapterXI">Chapter XI</a>
             <a href="#chapterXII">Chapter XII</a>
@@ -129,10 +130,9 @@
             <a href="#chapterXXII">Chapter XXII</a>
             <a href="#chapterXXIII">Chapter XXIII</a>
         </div>
-       
+
         <button id="backButton">🔙 Back to Chapters</button>
         <div id="chapterContent">
-
         </div>
     </div>
 
@@ -145,6 +145,8 @@
 
             $("#chapterContent").html(`<h2>${chapterName}</h2>`);
 
+            //top title
+            $(".title").html(`${chapterName}`);
             // Mark the corresponding chapter link as active
             $(".scrollmenu a").removeClass("activeChapter");
 
@@ -165,6 +167,22 @@
         $('#backButton').on('click', function () {
             $('#chapterDescriptionDiv').hide();
             $('#chapterListDiv').show();
+            $(".title").html(`Indian Penal Code - 1860`);
+        });
+
+
+        $(".scrollmenu a").on('click', function (e) {
+            e.preventDefault();
+
+            // Extract the chapter name from the link
+            const chapterText = $(this).text().trim();
+
+            // Find the corresponding chapter in the list
+            const correspondingChapter = $(`.chapter:contains("${chapterText }")`);
+
+            if (correspondingChapter.length) {
+                showChapter(correspondingChapter); // Open the clicked chapter directly
+            }
         });
     </script>
 
