@@ -150,9 +150,16 @@
 
             // Match the chapter number from the text (e.g., Chapter I, Chapter II)
             const chapterNumber = chapterName.match(/Chapter (\w+)/)?.[1];
-            if (chapterNumber) {
-                $(`.scrollmenu a[href='#chapter${chapterNumber.toUpperCase()}']`).addClass("activeChapter");
-            }
+                if (chapterNumber) {
+            const activeLink = $(`.scrollmenu a[href='#chapter${chapterNumber.toUpperCase()}']`);
+            activeLink.addClass("activeChapter");
+
+            // Auto-scroll to bring the active link into view
+            activeLink[0].scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center' // Aligns the active chapter in the center
+            });
+        }
         }
 
         $('#backButton').on('click', function () {
