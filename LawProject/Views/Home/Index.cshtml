@@ -43,7 +43,7 @@
                 border-bottom: 3px solid #FF5C5C;
             }
 
-        .activeChapter {
+        .activeChapter, .activeSection {
             border-bottom: 3px solid red;
         }
 
@@ -57,6 +57,7 @@
             padding: 10px;
             margin-bottom: 5px;
             border: 1px solid #8B5A2B;
+            cursor: pointer;
         }
 
         div.scrollmenu {
@@ -72,8 +73,52 @@
                 padding: 14px;
                 text-decoration: none;
                 font-size: 10px;
+                cursor: pointer;
             }
 
+        div.scrollSection {
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+            div.scrollSection a {
+                display: inline-block;
+                color: white;
+                text-align: center;
+                padding: 14px;
+                text-decoration: none;
+                font-size: 10px;
+                cursor: pointer;
+            }
+
+        .section-item {
+            background-color: #FFF8DC;
+            padding: 8px;
+            margin-bottom: 3px;
+            border: 1px solid #8B5A2B;
+            cursor: pointer;
+        }
+
+        .back-button {
+            margin: 10px;
+            padding: 8px 15px;
+            background-color: #7A4921;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .section-content {
+            padding: 15px;
+            background-color: #FFF8E0;
+            border: 1px solid #8B5A2B;
+            margin: 10px;
+        }
+
+        .d-none {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -81,112 +126,303 @@
         <div class="title">Indian Penal Code - 1860</div>
     </div>
     <div id="chapterListDiv">
-
         <div class="tabs">
             <div class="active">INDIAN PENAL CODE - 1860</div>
         </div>
 
         <div class="chapter-list">
-            <div class="chapter" onclick="showChapter(this)">Chapter I - Introduction (1–5)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter II - General Explanations (6–52A)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter III - Punishments (53–75)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter IV - General Exceptions (76–106)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter V - Abetment (107–120)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter VA - Criminal Conspiracy (120A–120B)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter VI - Offences against the State (121–130)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter VII - Offences relating to the Army, Navy and Air Force (131–140)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter VIII - Offences against the Public Tranquillity (141–160)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter IX - Offences by or related to Public Servants (161–171)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter IXA - Offences relating to Elections (171A–171I)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter X - Contempts of Lawful Authority of Public Servants (172–190)</div>
-            <div class="chapter" onclick="showChapter(this)">Chapter XI - False Evidence and Offences against Public Justice</div>
+            <div class="chapter" data-chapter="I">Chapter I - Introduction (1–5)</div>
+            <div class="chapter" data-chapter="II">Chapter II - General Explanations (6–52A)</div>
+            <div class="chapter" data-chapter="III">Chapter III - Punishments (53–75)</div>
+            <div class="chapter" data-chapter="IV">Chapter IV - General Exceptions (76–106)</div>
+            <div class="chapter" data-chapter="V">Chapter V - Abetment (107–120)</div>
+            <div class="chapter" data-chapter="VA">Chapter VA - Criminal Conspiracy (120A–120B)</div>
+            <div class="chapter" data-chapter="VI">Chapter VI - Offences against the State (121–130)</div>
+            <div class="chapter" data-chapter="VII">Chapter VII - Offences relating to the Army, Navy and Air Force (131–140)</div>
+            <div class="chapter" data-chapter="VIII">Chapter VIII - Offences against the Public Tranquillity (141–160)</div>
+            <div class="chapter" data-chapter="IX">Chapter IX - Offences by or related to Public Servants (161–171)</div>
+            <div class="chapter" data-chapter="IXA">Chapter IXA - Offences relating to Elections (171A–171I)</div>
+            <div class="chapter" data-chapter="X">Chapter X - Contempts of Lawful Authority of Public Servants (172–190)</div>
+            <div class="chapter" data-chapter="XI">Chapter XI - False Evidence and Offences against Public Justice</div>
         </div>
     </div>
 
     <div id="chapterDescriptionDiv" style="display: none;">
+        <!-- Chapter navigation menu -->
         <div class="scrollmenu">
-            <a href="#chapterI" class="activeChapter">Chapter I</a>
-            <a href="#chapterII">Chapter II</a>
-            <a href="#chapterIII">Chapter III</a>
-            <a href="#chapterIV">Chapter IV</a>
-            <a href="#chapterV">Chapter V</a>
-            <a href="#chapterVA">Chapter VA</a>
-            <a href="#chapterVI">Chapter VI</a>
-            <a href="#chapterVII">Chapter VII</a>
-            <a href="#chapterVIII">Chapter VIII</a>
-            <a href="#chapterIX">Chapter IX</a>
-            <a href="#chapterIXA">Chapter IXA</a>
-            <a href="#chapterX">Chapter X</a>
-            <a href="#chapterXI">Chapter XI</a>
-            <a href="#chapterXII">Chapter XII</a>
-            <a href="#chapterXIII">Chapter XIII</a>
-            <a href="#chapterXV">Chapter XV</a>
-            <a href="#chapterXVI">Chapter XVI</a>
-            <a href="#chapterXVII">Chapter XVII</a>
-            <a href="#chapterXVIII">Chapter XVIII</a>
-            <a href="#chapterXIX">Chapter XIX</a>
-            <a href="#chapterXX">Chapter XX</a>
-            <a href="#chapterXXI">Chapter XXI</a>
-            <a href="#chapterXXII">Chapter XXII</a>
-            <a href="#chapterXXIII">Chapter XXIII</a>
+            <a href="#" data-chapter="I">Chapter I</a>
+            <a href="#" data-chapter="II">Chapter II</a>
+            <a href="#" data-chapter="III">Chapter III</a>
+            <a href="#" data-chapter="IV">Chapter IV</a>
+            <a href="#" data-chapter="V">Chapter V</a>
+            <a href="#" data-chapter="VA">Chapter VA</a>
+            <a href="#" data-chapter="VI">Chapter VI</a>
+            <a href="#" data-chapter="VII">Chapter VII</a>
+            <a href="#" data-chapter="VIII">Chapter VIII</a>
+            <a href="#" data-chapter="IX">Chapter IX</a>
+            <a href="#" data-chapter="IXA">Chapter IXA</a>
+            <a href="#" data-chapter="X">Chapter X</a>
+            <a href="#" data-chapter="XI">Chapter XI</a>
+            <a href="#" data-chapter="XII">Chapter XII</a>
+            <a href="#" data-chapter="XIII">Chapter XIII</a>
+            <a href="#" data-chapter="XV">Chapter XV</a>
+            <a href="#" data-chapter="XVI">Chapter XVI</a>
+            <a href="#" data-chapter="XVII">Chapter XVII</a>
+            <a href="#" data-chapter="XVIII">Chapter XVIII</a>
+            <a href="#" data-chapter="XIX">Chapter XIX</a>
+            <a href="#" data-chapter="XX">Chapter XX</a>
+            <a href="#" data-chapter="XXI">Chapter XXI</a>
+            <a href="#" data-chapter="XXII">Chapter XXII</a>
+            <a href="#" data-chapter="XXIII">Chapter XXIII</a>
         </div>
 
-        <button id="backButton">🔙 Back to Chapters</button>
+        <button id="backButton" class="back-button">🔙 Back to Chapters</button>
+
         <div id="chapterContent">
+            <div id="chapterI" class="chapter-section d-none">
+                <p class="section-item" data-section="1">Section 1. Title and extent of operation of the Code</p>
+                <p class="section-item" data-section="2">Section 2. Punishment of offences committed within India</p>
+                <p class="section-item" data-section="3">Section 3. Punishment of offences committed beyond...</p>
+                <p class="section-item" data-section="4">Section 4. Extension of Code to extra-territorial offences</p>
+                <p class="section-item" data-section="5">Section 5. Certain laws not to be affected by this Act</p>
+            </div>
+            <div id="chapterII" class="chapter-section d-none">
+                <p class="section-item" data-section="6">Section 6. Definitions in the Code</p>
+                <p class="section-item" data-section="7">Section 7. Sense of expression once explained</p>
+                <p class="section-item" data-section="8">Section 8. Gender</p>
+                <p class="section-item" data-section="9">Section 9. Number</p>
+                <p class="section-item" data-section="10">Section 10. "Man". "Woman"</p>
+            </div>
+            <div id="chapterIII" class="chapter-section d-none">
+                <p class="section-item" data-section="53">Section 53. Punishments</p>
+                <p class="section-item" data-section="53A">Section 53A. Construction of reference to transportation</p>
+                <p class="section-item" data-section="54">Section 54. Commutation of sentence of death</p>
+                <p class="section-item" data-section="55">Section 55. Commutation of sentence of imprisonment for life</p>
+                <p class="section-item" data-section="55A">Section 55A. Definition of "appropriate Government"</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="sectionContentDiv" style="display: none;">
+        <!-- Chapter navigation menu -->
+        <div class="scrollmenu">
+            <a href="#" data-chapter="I">Chapter I</a>
+            <a href="#" data-chapter="II">Chapter II</a>
+            <a href="#" data-chapter="III">Chapter III</a>
+            <a href="#" data-chapter="IV">Chapter IV</a>
+            <a href="#" data-chapter="V">Chapter V</a>
+            <a href="#" data-chapter="VA">Chapter VA</a>
+            <a href="#" data-chapter="VI">Chapter VI</a>
+            <a href="#" data-chapter="VII">Chapter VII</a>
+            <a href="#" data-chapter="VIII">Chapter VIII</a>
+            <a href="#" data-chapter="IX">Chapter IX</a>
+            <a href="#" data-chapter="IXA">Chapter IXA</a>
+            <a href="#" data-chapter="X">Chapter X</a>
+            <a href="#" data-chapter="XI">Chapter XI</a>
+            <a href="#" data-chapter="XII">Chapter XII</a>
+            <a href="#" data-chapter="XIII">Chapter XIII</a>
+            <a href="#" data-chapter="XV">Chapter XV</a>
+            <a href="#" data-chapter="XVI">Chapter XVI</a>
+            <a href="#" data-chapter="XVII">Chapter XVII</a>
+            <a href="#" data-chapter="XVIII">Chapter XVIII</a>
+            <a href="#" data-chapter="XIX">Chapter XIX</a>
+            <a href="#" data-chapter="XX">Chapter XX</a>
+            <a href="#" data-chapter="XXI">Chapter XXI</a>
+            <a href="#" data-chapter="XXII">Chapter XXII</a>
+            <a href="#" data-chapter="XXIII">Chapter XXIII</a>
+        </div>
+
+        <!-- Section navigation menu -->
+        <div class="scrollSection">
+            <!-- Section tabs will be dynamically populated -->
+        </div>
+
+        <button id="backToSections" class="back-button">🔙 Back to Sections</button>
+
+        <div class="section-content">
+            <!-- Section content will be dynamically populated -->
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function showChapter(element) {
-            const chapterName = $(element).text().trim(); // Get text from clicked element
-            $("#chapterListDiv").hide();
+        // Store current navigation state
+        let currentChapter = "";
+        let currentSection = "";
+
+        // Chapter selection
+        $(".chapter").on("click", function() {
+            const chapterNum = $(this).data("chapter");
+            showChapterContent(chapterNum);
+        });
+
+        // Chapter selection from top menu
+        $(document).on("click", ".scrollmenu a", function(e) {
+            e.preventDefault();
+            const chapterNum = $(this).data("chapter");
+            showChapterContent(chapterNum);
+        });
+
+        // Section item click
+        $(document).on("click", ".section-item", function() {
+            const sectionNum = $(this).data("section");
+            showSectionContent(currentChapter, sectionNum);
+        });
+
+        // Section tab click from scrollSection
+        $(document).on("click", ".scrollSection a", function() {
+            const sectionNum = $(this).data("section");
+            showSectionContent(currentChapter, sectionNum);
+        });
+
+        // Back button to chapters
+        $("#backButton").on("click", function() {
+            $("#chapterDescriptionDiv").hide();
+            $("#chapterListDiv").show();
+            $(".title").html("Indian Penal Code - 1860");
+
+            // Reset current selections
+            currentChapter = "";
+            currentSection = "";
+        });
+
+        // Back button to sections
+        $("#backToSections").on("click", function() {
+            $("#sectionContentDiv").hide();
             $("#chapterDescriptionDiv").show();
 
-            $("#chapterContent").html(`<h2>${chapterName}</h2>`);
+            // Update title to show chapter
+            updateTitleForChapter(currentChapter);
 
-            //top title
-            $(".title").html(`${chapterName}`);
-            // Mark the corresponding chapter link as active
+            // Reset current section
+            currentSection = "";
+        });
+
+        // Function to show chapter content
+        function showChapterContent(chapterNum) {
+            // Store current chapter
+            currentChapter = chapterNum;
+
+            // Hide chapter list and section content, show chapter description
+            $("#chapterListDiv").hide();
+            $("#sectionContentDiv").hide();
+            $("#chapterDescriptionDiv").show();
+
+            // Hide all chapter sections and show the selected one
+            $(".chapter-section").addClass("d-none");
+            $(`#chapter${chapterNum}`).removeClass("d-none");
+
+            // Update active chapter in scroll menu (both in chapter view and section view)
             $(".scrollmenu a").removeClass("activeChapter");
+            $(`.scrollmenu a[data-chapter="${chapterNum}"]`).addClass("activeChapter");
 
-            // Match the chapter number from the text (e.g., Chapter I, Chapter II)
-            const chapterNumber = chapterName.match(/Chapter (\w+)/)?.[1];
-                if (chapterNumber) {
-            const activeLink = $(`.scrollmenu a[href='#chapter${chapterNumber.toUpperCase()}']`);
-            activeLink.addClass("activeChapter");
+            // Update title
+            updateTitleForChapter(chapterNum);
 
-            // Auto-scroll to bring the active link into view
-            activeLink[0].scrollIntoView({
-                behavior: 'smooth',
-                inline: 'center' // Aligns the active chapter in the center
+            // Scroll active chapter into view
+            const activeLink = $(`.scrollmenu a[data-chapter="${chapterNum}"]`)[0];
+            if (activeLink) {
+                activeLink.scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center'
+                });
+            }
+        }
+
+        // Function to show section content
+        function showSectionContent(chapterNum, sectionNum) {
+            // Store current section
+            currentSection = sectionNum;
+
+            // Hide chapter description and show section content
+            $("#chapterDescriptionDiv").hide();
+            $("#sectionContentDiv").show();
+
+            // Update chapter tabs
+            $(".scrollmenu a").removeClass("activeChapter");
+            $(`.scrollmenu a[data-chapter="${chapterNum}"]`).addClass("activeChapter");
+
+            // Update section tabs
+            populateSectionTabs(chapterNum);
+
+            // Update active section in tabs
+            $(".scrollSection a").removeClass("activeSection");
+            $(`.scrollSection a[data-section="${sectionNum}"]`).addClass("activeSection");
+
+            // Load section content
+            loadSectionContent(chapterNum, sectionNum);
+
+            // Update title for section
+            updateTitleForSection(chapterNum, sectionNum);
+
+            // Scroll active section into view
+            setTimeout(function() {
+                const activeSectionLink = $(`.scrollSection a[data-section="${sectionNum}"]`)[0];
+                if (activeSectionLink) {
+                    activeSectionLink.scrollIntoView({
+                        behavior: 'smooth',
+                        inline: 'center'
+                    });
+                }
+            }, 100);
+        }
+
+        // Function to populate section tabs
+        function populateSectionTabs(chapterNum) {
+            const $sectionTabs = $(".scrollSection");
+            $sectionTabs.empty();
+
+            // Get all sections from the chapter
+            const $sections = $(`#chapter${chapterNum} .section-item`);
+
+            $sections.each(function() {
+                const sectionNum = $(this).data("section");
+                const sectionText = $(this).text().split(".")[0]; // Get "Section X" part
+
+                const $tab = $("<a></a>")
+                    .attr("data-section", sectionNum)
+                    .text(sectionText);
+
+                if (sectionNum == currentSection) {
+                    $tab.addClass("activeSection");
+                }
+
+                $sectionTabs.append($tab);
             });
         }
+
+        // Function to load section content
+        function loadSectionContent(chapterNum, sectionNum) {
+            // In a real application, you would fetch the actual content
+            // For this example, we'll generate placeholder content
+            const $sectionContent = $(".section-content");
+
+            // Find the section title
+            const sectionTitle = $(`#chapter${chapterNum} .section-item[data-section="${sectionNum}"]`).text();
+
+            // Generate content (replace with actual content in real application)
+            const content = `
+                <h3>${sectionTitle}</h3>
+                <div>
+                    <p>This is the content for ${sectionTitle} in Chapter ${chapterNum} of the Indian Penal Code.</p>
+                    <p>In a real application, this would contain the full text of the section.</p>
+                </div>
+            `;
+
+            $sectionContent.html(content);
         }
 
-        $('#backButton').on('click', function () {
-            $('#chapterDescriptionDiv').hide();
-            $('#chapterListDiv').show();
-            $(".title").html(`Indian Penal Code - 1860`);
-        });
+        // Update title for chapter
+        function updateTitleForChapter(chapterNum) {
+            const chapterTitle = $(`.chapter[data-chapter="${chapterNum}"]`).text();
+            $(".title").text(chapterTitle);
+        }
 
-
-        $(".scrollmenu a").on('click', function (e) {
-            e.preventDefault();
-
-            // Extract the chapter name from the link
-            const chapterText = $(this).text().trim();
-
-            // Find the corresponding chapter in the list
-            const correspondingChapter = $(`.chapter:contains("${chapterText }")`);
-
-            if (correspondingChapter.length) {
-                showChapter(correspondingChapter); // Open the clicked chapter directly
-            }
-        });
+        // Update title for section
+        function updateTitleForSection(chapterNum, sectionNum) {
+            const sectionTitle = $(`#chapter${chapterNum} .section-item[data-section="${sectionNum}"]`).text();
+            $(".title").text(sectionTitle);
+        }
     </script>
-
-
-
 </body>
 </html>
